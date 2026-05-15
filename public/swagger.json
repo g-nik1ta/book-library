@@ -1,0 +1,175 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Book Library API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/books": {
+            "get": {
+                "summary": "Get all books",
+                "responses": {
+                    "200": {
+                        "description": "List of books"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create book",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "title",
+                                    "publisher",
+                                    "author",
+                                    "genre",
+                                    "published_at",
+                                    "word_count",
+                                    "price_usd"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Harry Potter"
+                                    },
+                                    "publisher": {
+                                        "type": "string",
+                                        "example": "Bloomsbury"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "example": "J.K. Rowling"
+                                    },
+                                    "genre": {
+                                        "type": "string",
+                                        "example": "Fantasy"
+                                    },
+                                    "published_at": {
+                                        "type": "string",
+                                        "example": "1997-06-26"
+                                    },
+                                    "word_count": {
+                                        "type": "integer",
+                                        "example": 77000
+                                    },
+                                    "price_usd": {
+                                        "type": "number",
+                                        "example": 19.99
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/books/{id}": {
+            "get": {
+                "summary": "Get book by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Book data"
+                    },
+                    "404": {
+                        "description": "Book not found"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update book",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "New Title"
+                                    },
+                                    "publisher": {
+                                        "type": "string"
+                                    },
+                                    "author": {
+                                        "type": "string"
+                                    },
+                                    "genre": {
+                                        "type": "string"
+                                    },
+                                    "published_at": {
+                                        "type": "string",
+                                        "example": "2024-01-01"
+                                    },
+                                    "word_count": {
+                                        "type": "integer"
+                                    },
+                                    "price_usd": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Book not found"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete book",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Book not found"
+                    }
+                }
+            }
+        }
+    }
+}
