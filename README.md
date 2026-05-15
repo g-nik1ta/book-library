@@ -54,12 +54,14 @@ php artisan key:generate
 
 Update .env:
 
+```
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=book_library
 DB_USERNAME=postgres
 DB_PASSWORD=your_password
+```
 
 
 ### 5. Run migrations
@@ -83,7 +85,6 @@ http://127.0.0.1:8000/api
 ## 📖 Swagger UI
 
 Swagger documentation is available at:
-
 http://127.0.0.1:8000/docs
 
 ## 🧪 Running Tests
@@ -91,9 +92,6 @@ http://127.0.0.1:8000/docs
 php artisan test
 ```
 
-## 📌 Suggested improvement
-
-```md
 ## 📊 Project Summary
 
 This project demonstrates:
@@ -103,4 +101,3 @@ This project demonstrates:
 - Database migrations and seeders
 - PHPUnit feature testing
 - Swagger API documentation
-```
